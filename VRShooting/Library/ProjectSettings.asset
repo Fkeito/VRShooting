@@ -717,7 +717,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: ea74941f-bb7a-447a-8b48-7cb5e8e2a5c5
-  projectName: 
+  projectName: VRShooting
   organizationId: hamachu1122
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
