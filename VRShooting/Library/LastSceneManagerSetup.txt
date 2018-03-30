@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Individual/Enemy1.unity
+- path: Assets/Individual/Stage.unity
   isLoaded: 1
   isActive: 1
