@@ -27,6 +27,7 @@ public class CountDownTimer : MonoBehaviour {
 
         minute = (int)totaltime / 60;
         second = totaltime - minute * 60;
+        if (second > 60f) {minute += 1; second = 0f;}
 
         if ((int)second != (int)oldsecond) timertext.text = minute.ToString("00") + ":" + second.ToString("00");
         oldsecond = second;

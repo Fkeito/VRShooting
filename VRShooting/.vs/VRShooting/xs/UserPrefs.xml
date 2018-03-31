@@ -1,8 +1,7 @@
 ﻿<Properties StartupConfiguration="{577593A7-767D-521F-79BD-C2996C9FD0CA}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameStart.cs">
     <Files>
-      <File FileName="Assets/Scripts/CountDownTimer.cs" Line="34" Column="76" />
-      <File FileName="Assets/Scripts/GameStart.cs" Line="6" Column="25" />
+      <File FileName="Assets/Scripts/GameStart.cs" Line="15" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
