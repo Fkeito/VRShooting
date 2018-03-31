@@ -11,6 +11,7 @@ public class CountDownTimer : MonoBehaviour {
     private float second;
     private float totaltime;
     private float oldsecond;
+    private int lminute;
     private Text timertext;
 
 	void Start () {
@@ -26,10 +27,14 @@ public class CountDownTimer : MonoBehaviour {
         totaltime -= Time.deltaTime;
 
         minute = (int)totaltime / 60;
-        second = totaltime - minute * 60;
-        if (second > 60f) {minute += 1; second = 0f;}
+        second = totaltime % 60;
 
-        if ((int)second != (int)oldsecond) timertext.text = minute.ToString("00") + ":" + second.ToString("00");
+        lminute = minute + 1;
+
+        if ((int)second != (int)oldsecond){
+            if (second.ToString("00") == "60") timertext.text = lminute.ToString("00") + ":00";
+            else timertext.text = minute.ToString("00") + ":" + second.ToString("00");
+        }
         oldsecond = second;
 
         if (totaltime <= 0f) { timertext.text = "00:00"; Debug.Log("終了"); }

@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{577593A7-767D-521F-79BD-C2996C9FD0CA}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameStart.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CountEnemy.cs">
     <Files>
       <File FileName="Assets/Scripts/GameStart.cs" Line="15" Column="6" />
+      <File FileName="Assets/Scripts/CountDownTimer.cs" Line="40" Column="76" />
+      <File FileName="Assets/Scripts/CountEnemy.cs" Line="7" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
