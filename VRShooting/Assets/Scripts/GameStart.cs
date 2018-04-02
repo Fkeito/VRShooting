@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour {
 
+    public void OnClick()
+    {
+        Debug.Log("クリックされた");
+    }
+
     public void StartGame(){
         SceneManager.LoadScene("Main");
     }
