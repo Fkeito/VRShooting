@@ -10,7 +10,6 @@ public class GunShooter : MonoBehaviour {
     void Awake()
     {
         trackedObject = GetComponent<SteamVR_TrackedObject>();
-        device = SteamVR_Controller.Input((int)trackedObject.index);
     }
 
     // Use this for initialization
@@ -20,14 +19,17 @@ public class GunShooter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        device = SteamVR_Controller.Input((int)trackedObject.index);
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
         {
+            Debug.Log("Fire!");
             Fire();
         }
 	}
 
     void Fire(){
         Ray ray = new Ray(transform.position, transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * 10f);
 
         RaycastHit hit;
         EnemyBase enemy = null;

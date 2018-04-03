@@ -5,7 +5,7 @@ using UnityEngine;
 public class guard : MonoBehaviour {
     public AudioClip sound;
 
-    void OnCollisionEnter(Collision collision)
+    public void Attacked()
     {
         AudioSource.PlayClipAtPoint(sound, transform.position);
     }
