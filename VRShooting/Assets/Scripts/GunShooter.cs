@@ -19,7 +19,11 @@ public class GunShooter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        device = SteamVR_Controller.Input((int)trackedObject.index);
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            device = SteamVR_Controller.Input((int)trackedObject.index);
+        }
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
         {
             Debug.Log("Fire!");
