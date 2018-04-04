@@ -51,6 +51,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4454891553692970}
+  - component: {fileID: 114900805875943448}
   m_Layer: 0
   m_Name: Fighter
   m_TagString: Untagged
@@ -160,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 1700695060238362}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4867625160712728}
   - {fileID: 4349003541750836}
@@ -387,3 +388,17 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114900805875943448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1700695060238362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7c9478f87e357488032ece07a4a59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannon: {fileID: 1917792066082762}
+  bullet: {fileID: 1704012732201716, guid: c802d035a5d3b1043a7ff9b315c88745, type: 2}
+  explosion: {fileID: 1779881074926358, guid: 7fdda3c6252719d43af5893ff316daa6, type: 2}

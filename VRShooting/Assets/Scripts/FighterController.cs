@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FighterController : EnemyBase
 {
-
-    private Vector3 bulletPos;
+    private GameObject player;
+    public GameObject cannon;
 
     public GameObject bullet;
     public GameObject explosion;
@@ -13,21 +13,13 @@ public class FighterController : EnemyBase
     // Use this for initialization
     void Start()
     {
-        bulletPos = new Vector3(0, -0.2f, -1f);
-
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Fire();
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Destroy(this.gameObject);
-        }
+
     }
 
     void OnDisable()
@@ -35,14 +27,25 @@ public class FighterController : EnemyBase
         Dead();
     }
 
+    public void Attack()
+    {
+        cannon.transform.LookAt(player.transform);
+
+        Vector3 rand = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f));
+        cannon.transform.forward += rand;
+
+        Invoke("Fire", 0.3f);
+    }
+
     void Fire()
     {
         GameObject obj = Instantiate(bullet);
-        obj.transform.position = bulletPos;
+        obj.transform.position = cannon.transform.forward;
+        obj.transform.LookAt(cannon.transform);
         Rigidbody rb = obj.GetComponent<Rigidbody>();
-        rb.AddForce(obj.transform.forward * -100);
+        rb.AddForce(obj.transform.forward * -300);
 
-        Destroy(obj, 5f);
+        Destroy(obj, 2f);
     }
 
     void Dead()
@@ -50,5 +53,4 @@ public class FighterController : EnemyBase
         GameObject obj = Instantiate(explosion);
         Destroy(obj, 2f);
     }
-
 }
