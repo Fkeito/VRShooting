@@ -14,6 +14,9 @@ public class GunShooter : MonoBehaviour {
     private float BulletSpeed;
     [SerializeField]
     private new Animation animation;
+    [SerializeField]
+    private float PulseMaxTime;
+    private float PulseCurrentTime=0f;
     void Awake()
     {
         trackedObject = GetComponent<SteamVR_TrackedObject>();
@@ -31,24 +34,26 @@ public class GunShooter : MonoBehaviour {
         {
             device = SteamVR_Controller.Input((int)trackedObject.index);
         }
+        if (animation.IsPlaying("Shoot"))
+        {
+            PulseCurrentTime += Time.deltaTime;
+            if (PulseCurrentTime < PulseMaxTime)
+            {
+                device.TriggerHapticPulse(3000);
+            }
+            return;
+        }
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)||Input.GetKey(KeyCode.J))
         {
             //Debug.Log("Fire!");
             Fire();
         }
-        if(device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) || Input.GetKey(KeyCode.K))
-        {
-            Reload();
-        }
-        if (animation.IsPlaying("Shoot"))
-        {
-            device.TriggerHapticPulse(500);
-        }
+        
 	}
 
     void Fire(){
         Vector3 firePos = Zyukou.transform.position;
-        Vector3 dir = transform.forward;
+        Vector3 dir = -Zyukou.transform.forward;
         Ray ray = new Ray(firePos, dir);
         //Debug.DrawRay(ray.origin, ray.direction * 10f);
         GameObject bullet=Instantiate(GunBullet,firePos,new Quaternion());
@@ -65,12 +70,10 @@ public class GunShooter : MonoBehaviour {
             bullet.GetComponent<GunBullet>().Shot(dir, BulletSpeed);
         }
         animation.Play("Shoot");
+        PulseCurrentTime = 0;
         if((bool)(enemy=obj.GetComponent<EnemyBase>())){
             enemy.Attacked();
         }
-    }
-    void Reload() {
-
     }
 
 
