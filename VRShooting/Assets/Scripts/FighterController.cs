@@ -24,7 +24,9 @@ public class FighterController : EnemyBase
 
     void OnDisable()
     {
-        Dead();
+        GameObject obj = Instantiate(explosion);
+        obj.transform.position = this.gameObject.transform.position;
+        Destroy(obj, 2f);
     }
 
     public void Attack()
@@ -45,12 +47,6 @@ public class FighterController : EnemyBase
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         rb.AddForce(obj.transform.forward * -300);
 
-        Destroy(obj, 2f);
-    }
-
-    void Dead()
-    {
-        GameObject obj = Instantiate(explosion);
         Destroy(obj, 2f);
     }
 }
