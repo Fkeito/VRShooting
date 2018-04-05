@@ -14,10 +14,13 @@ public class CountDownTimer : MonoBehaviour {
     private int lminute;
     private Text timertext;
 
+    Slider playerslider;
+
 	void Start () {
         totaltime = minute * 60 + second;
         oldsecond = 0f;
         timertext = GetComponentInChildren<Text>();
+        playerslider = GameObject.Find("HP").GetComponent<Slider>();
 	}
 	
 	void Update () {
@@ -36,6 +39,8 @@ public class CountDownTimer : MonoBehaviour {
             else timertext.text = minute.ToString("00") + ":" + second.ToString("00");
         }
         oldsecond = second;
+
+        if (playerslider.value <= 0) totaltime = 0f;
 
         if (totaltime <= 0f) { timertext.text = "00:00"; Debug.Log("終了"); }
 	}
