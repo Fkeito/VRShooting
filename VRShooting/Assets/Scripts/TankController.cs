@@ -23,7 +23,7 @@ public class TankController : EnemyBase {
     private float m_OriginalPitch;              // The pitch of the audio source at the start of the scene.
     private ParticleSystem[] m_particleSystems; // References to all the particles systems used by the Tanks
 
-    private Vector3 targetPosition;
+    public Vector3 targetPosition;
 
     private float changeTargetSqrDistance = 1f;
 
@@ -117,6 +117,7 @@ public class TankController : EnemyBase {
             float sqrDistanceToTarget = Vector3.SqrMagnitude(transform.position - targetPosition);
             if (sqrDistanceToTarget < changeTargetSqrDistance)
             {
+                ResetStartPos();
                 tankMode = TankMode.shooting;
             }
 
@@ -160,7 +161,7 @@ public class TankController : EnemyBase {
     public Vector3 GetRandomPositionOnLevel(float levelSize = 10f)
     {
         Debug.Log("Set");
-        return new Vector3(Random.Range(-levelSize, levelSize), 0, Random.Range(-levelSize, levelSize));
+        return new Vector3(startPos.x + Random.Range(-levelSize, levelSize), 0, startPos.z + Random.Range(-levelSize, levelSize));
     }
     public Vector3 GetRandomPositionOnLevel(float levelSize, Vector3 normPosition)
     {
