@@ -5,14 +5,9 @@ using UnityEngine;
 public class HIT : MonoBehaviour {
 
     public AudioClip sound;
+    
 
-    void Start()
-    {
-       
-        Debug.Log("kaku");
-    }
-
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         AudioSource.PlayClipAtPoint(sound, transform.position);
     }

@@ -6,6 +6,6 @@ public class EnemyBullet : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-        if(!other.gameObject.CompareTag("Enemy") && other.gameObject.CompareTag("Tank") && other.gameObject.CompareTag("Fighter")) Destroy(this.gameObject);
+        if(!other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("Tank") && !other.gameObject.CompareTag("Fighter")) Destroy(this.gameObject);
     }
 }

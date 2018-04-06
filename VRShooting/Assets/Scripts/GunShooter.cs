@@ -58,7 +58,7 @@ public class GunShooter : MonoBehaviour {
         //Debug.DrawRay(ray.origin, ray.direction * 10f);
         GameObject bullet=Instantiate(GunBullet,firePos,new Quaternion());
         RaycastHit hit;
-        EnemyBase enemy = null;
+        //EnemyBase enemy = null;
         GameObject obj=null;
         if (Physics.Raycast(ray, out hit))
         {
@@ -71,8 +71,8 @@ public class GunShooter : MonoBehaviour {
         }
         animation.Play("Shoot");
         PulseCurrentTime = 0;
-        if((bool)(enemy=obj.GetComponent<EnemyBase>())){
-            enemy.Attacked();
+        if(obj.GetComponent<EnemyBase>()){
+            obj.GetComponent<EnemyBase>().Attacked();
         }
     }
 

@@ -9,11 +9,21 @@ public class FighterController : EnemyBase
 
     public GameObject bullet;
     public GameObject explosion;
-
+    public float Second;
     // Use this for initialization
     void Start()
     {
-        player = GameObject.Find("Player");
+        //*
+        GameObject tmpObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        tmpObj.transform.parent = GameObject.Find("Player").transform;
+        tmpObj.transform.position = new Vector3(-1.9f, 2.5f, 2.1f);
+        tmpObj.GetComponent<MeshRenderer>().enabled = false;
+        player = tmpObj;
+        //*/
+
+        //player = GameObject.Find("Controller (right)");
+
+        StartCoroutine("attcksuru");
     }
 
     // Update is called once per frame
@@ -33,8 +43,8 @@ public class FighterController : EnemyBase
     {
         cannon.transform.LookAt(player.transform);
 
-        Vector3 rand = new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f));
-        cannon.transform.forward += rand;
+        //Vector3 rand = new Vector3(Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f));
+        //cannon.transform.forward += rand;
 
         Invoke("Fire", 0.3f);
     }
@@ -42,11 +52,18 @@ public class FighterController : EnemyBase
     void Fire()
     {
         GameObject obj = Instantiate(bullet);
-        obj.transform.position = cannon.transform.forward;
+        obj.transform.position = cannon.transform.forward + cannon.transform.position; ;
         obj.transform.LookAt(cannon.transform);
         Rigidbody rb = obj.GetComponent<Rigidbody>();
-        rb.AddForce(obj.transform.forward * -300);
+        rb.AddForce(obj.transform.forward * -800);
 
-        Destroy(obj, 2f);
+        Destroy(obj, 15f);
+    }
+    private IEnumerator attcksuru() {
+        while (true) {
+            yield return new  WaitForSeconds(Second);
+            Debug.Log("utte");
+            Attack();
+        }
     }
 }

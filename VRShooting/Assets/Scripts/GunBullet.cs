@@ -16,7 +16,7 @@ public class GunBullet : MonoBehaviour {
         float time = (transform.position - Goal).sqrMagnitude / speed;
         hasGoal = true;
         Shot(dir, speed);
-        Destroy(gameObject,time);
+        Destroy(gameObject,time+10);
     }
     private void Update()
     {
