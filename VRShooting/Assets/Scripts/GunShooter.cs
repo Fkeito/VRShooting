@@ -74,6 +74,10 @@ public class GunShooter : MonoBehaviour {
         if(obj.GetComponent<EnemyBase>()){
             obj.GetComponent<EnemyBase>().Attacked();
         }
+        if (obj.GetComponent<SetDifficulty>())
+        {
+            obj.GetComponent<SetDifficulty>().OnSelected();
+        }
     }
 
 

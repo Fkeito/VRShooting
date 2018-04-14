@@ -29,7 +29,7 @@ public class DebugTank : MonoBehaviour {
             if (!tCon)
             {
                 tCon = Instantiate(tank).GetComponent<TankController>();
-                tCon.tankMode = TankMode.shooting;
+                TankController.tankMode = TankMode.shooting;
             }
         }
     }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHP : MonoBehaviour {
 
     Slider playerslider;
-    float damage = 5;
+    float damage = 10;
 
     public GameObject gameover;
 

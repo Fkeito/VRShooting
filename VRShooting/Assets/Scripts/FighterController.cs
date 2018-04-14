@@ -9,7 +9,9 @@ public class FighterController : EnemyBase
 
     public GameObject bullet;
     public GameObject explosion;
-    public float Second;
+    public static float second;
+    public static float bulletSpeed;
+
     // Use this for initialization
     void Start()
     {
@@ -55,13 +57,14 @@ public class FighterController : EnemyBase
         obj.transform.position = cannon.transform.forward + cannon.transform.position; ;
         obj.transform.LookAt(cannon.transform);
         Rigidbody rb = obj.GetComponent<Rigidbody>();
-        rb.AddForce(obj.transform.forward * -800);
+        rb.AddForce(obj.transform.forward * (-bulletSpeed));
 
         Destroy(obj, 15f);
     }
     private IEnumerator attcksuru() {
         while (true) {
-            yield return new  WaitForSeconds(Second);
+            float _second = Random.Range(second, second + 1.5f);
+            yield return new  WaitForSeconds(_second);
             Debug.Log("utte");
             Attack();
         }

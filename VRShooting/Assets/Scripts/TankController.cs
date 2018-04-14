@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TankController : EnemyBase {
 
-    public TankMode tankMode;
+    public static TankMode tankMode;
 
     public GameObject turret;
     private GameObject player;
@@ -27,6 +27,8 @@ public class TankController : EnemyBase {
     private float changeTargetSqrDistance = 1f;
 
     private Vector3 startPos;
+
+    public static float bulletSpeed = 800f;
 
     private bool attack = false;
     
@@ -106,9 +108,10 @@ public class TankController : EnemyBase {
 
         //*
 
-
-        // 目標地点との距離が小さければ、次のランダムな目標地点を設定する
-        float sqrDistanceToTarget = Vector3.SqrMagnitude(transform.position - targetPosition);
+        if (tankMode != TankMode.stop)
+        {
+            // 目標地点との距離が小さければ、次のランダムな目標地点を設定する
+            float sqrDistanceToTarget = Vector3.SqrMagnitude(transform.position - targetPosition);
             if (sqrDistanceToTarget < changeTargetSqrDistance)
             {
                 targetPosition = GetRandomPositionOnLevel();
@@ -121,6 +124,7 @@ public class TankController : EnemyBase {
             // 前方に進む
             //m_Rigidbody.velocity = (this.transform.forward * m_Speed * Time.deltaTime);
             transform.Translate(Vector3.forward * m_Speed * Time.deltaTime);
+        }
             //*/
             
             turret.transform.LookAt(player.transform);
@@ -156,7 +160,7 @@ public class TankController : EnemyBase {
         obj.transform.position = turret.transform.position + turret.transform.forward * 2f;
         obj.transform.LookAt(turret.transform);
         Rigidbody rb = obj.GetComponent<Rigidbody>();
-        rb.AddForce(obj.transform.forward * -1500);
+        rb.AddForce(obj.transform.forward * (-bulletSpeed));
 
         Destroy(obj, 50f);
     }
