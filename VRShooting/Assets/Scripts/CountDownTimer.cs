@@ -17,7 +17,7 @@ public class CountDownTimer : MonoBehaviour {
     Slider playerslider;
 
     public GameObject gameover;
-    private bool counting = false;
+    public bool counting = false;
 
 	void Start () {
         totaltime = minute * 60 + second;
@@ -27,9 +27,6 @@ public class CountDownTimer : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.S)){
-            counting = true;
-        }
         if (counting)
         {
             if (totaltime <= 0f)
