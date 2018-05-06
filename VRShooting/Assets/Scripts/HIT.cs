@@ -7,7 +7,7 @@ public class HIT : MonoBehaviour {
     public AudioClip sound;
     
 
-    void OnTriggerEnter(Collision collision)
+    void OnTriggerEnter(Collision other)
     {
         AudioSource.PlayClipAtPoint(sound, transform.position);
     }
