@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/360(2Eye).unity
+  isLoaded: 1
+  isActive: 1
